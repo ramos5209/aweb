@@ -1,5 +1,7 @@
 package br.com.aweb.sistema_produto.model;
 
+import org.springframework.boot.context.properties.bind.Name;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,7 +16,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank(message = "O nome não pode estar em branco!")
+    @NotBlank(message = "O nome não pode estar em branco!") 
     private String name;
     @NotNull(message = "O preço é obrigatorio!")
     @PositiveOrZero(message = "O valor deve ser positivo ou zero!")

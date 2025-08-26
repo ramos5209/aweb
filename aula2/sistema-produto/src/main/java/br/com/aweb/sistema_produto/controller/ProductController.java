@@ -44,6 +44,8 @@ public class ProductController {
             return "redirect:/products"; 
         }
     }
+    @GetMapping("/buscar/{name}")
+    
 
     @PostMapping
     public String save(@Valid Product product, BindingResult result, RedirectAttributes attributes){

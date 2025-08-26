@@ -29,6 +29,15 @@ public class ProductService {
         throw new RuntimeException("Produto não encontrado!");
     }
 
+    //Buscar por nome
+    public Product findNameProduct(String name){
+        Product product = productRepository.findByName(name);
+        if(product == null){
+            return product;
+        }
+        throw new RuntimeException("Produto não encontrado");
+    }
+
     //Cadastrar/alterar produto
     public Product creatProduct(Product product){
         return productRepository.save(product);
