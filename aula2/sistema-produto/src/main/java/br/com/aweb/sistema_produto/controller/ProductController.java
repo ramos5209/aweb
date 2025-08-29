@@ -47,15 +47,13 @@ public class ProductController {
             return "redirect:/products"; 
         }
     }
-    @GetMapping("/find")
-    public String findByName(@RequestParam("nome") String name, Model model, RedirectAttributes attributes ){
-        try {
-            model.addAttribute("product", productService.findNameProduct(name));
-            return "find";
-        } catch (Exception e) {
-            attributes.addFlashAttribute("error", "Produto Não encontrado!");
+    @GetMapping("/search")
+    public String search(@RequestParam(required = false) String name, Model model){
+        if(name != null && !name.isBlank()){
+            list<Product> products = productService.findByName(name);
+            model.addAttribute("products", products);
         }
-        return "redirect:/find";
+        
     }
     
 

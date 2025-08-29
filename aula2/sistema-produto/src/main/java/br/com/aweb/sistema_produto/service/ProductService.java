@@ -29,13 +29,13 @@ public class ProductService {
         throw new RuntimeException("Produto não encontrado!");
     }
 
-    //Buscar por nome
-    public List<Product> findNameProduct(String name){
-        List<Product> products = productRepository.findBynameContaining(name);
-        if(!products.isEmpty()){
-            return products;
-        }
-        throw new RuntimeException("Produto não encontrado");
+    //Buscar produtos por nome
+    public List<Product> findByName(String name){
+        List<Product> products = productRepository.findByNameContainingIgnoreCase(name);
+        // if(!products.isEmpty()){
+        //     return products;
+        // }
+        // throw new RuntimeException("Produto não encontrado");
     }
 
     //Cadastrar/alterar produto

@@ -10,6 +10,6 @@ import br.com.aweb.sistema_produto.model.Product;
 public interface ProductRepository extends JpaRepository<Product, Long>{
 
     //Busca produtos por nome
-    List<Product> findBynameContaining(String name);
+    List<Product> findByNameContainingIgnoreCase(String name);
 
 }
