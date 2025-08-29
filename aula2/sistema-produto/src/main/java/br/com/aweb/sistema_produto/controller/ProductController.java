@@ -50,11 +50,11 @@ public class ProductController {
     @GetMapping("/search")
     public String search(@RequestParam(required = false) String name, Model model){
         if(name != null && !name.isBlank()){
-            list<Product> products = productService.findByName(name);
+            List<Product> products = productService.findByName(name);
             model.addAttribute("products", products);
         }
+        return "search";
         
-    }
     
 
     @PostMapping
