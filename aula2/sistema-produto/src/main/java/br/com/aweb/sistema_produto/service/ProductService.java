@@ -30,10 +30,10 @@ public class ProductService {
     }
 
     //Buscar por nome
-    public Product findNameProduct(String name){
-        Product product = productRepository.findByName(name);
-        if(product == null){
-            return product;
+    public List<Product> findNameProduct(String name){
+        List<Product> products = productRepository.findBynameContaining(name);
+        if(!products.isEmpty()){
+            return products;
         }
         throw new RuntimeException("Produto não encontrado");
     }

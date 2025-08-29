@@ -1,5 +1,7 @@
 package br.com.aweb.sistema_produto.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.com.aweb.sistema_produto.model.Product;
@@ -44,7 +47,16 @@ public class ProductController {
             return "redirect:/products"; 
         }
     }
-    @GetMapping("/buscar/{name}")
+    @GetMapping("/find")
+    public String findByName(@RequestParam("nome") String name, Model model, RedirectAttributes attributes ){
+        try {
+            model.addAttribute("product", productService.findNameProduct(name));
+            return "find";
+        } catch (Exception e) {
+            attributes.addFlashAttribute("error", "Produto Não encontrado!");
+        }
+        return "redirect:/find";
+    }
     
 
     @PostMapping
