@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/style.css}" />
+    <title>Listagem de Alunos</title>
+</head>
+
+<body>
+
+    <h1>Listagem de Alunos</h1>
+
+    <div th:if="${message}" class="message">
+        <p th:text="${message}"></p>
+    </div>
+
+    <div th:if="${error}" class="error">
+        <p th:text="${error}"></p>
+    </div>
+
+    <p class="insert-link">
+        <a th:href="@{/alunos/novo}">Inserir Aluno</a>
+    </p>
+
+    <table>
+        <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Curso</th>
+            <th colspan="2">Ações</th>
+        </tr>
+        <tr th:each="aluno : ${alunos}">
+            <td th:text="${aluno.id}">---</td>
+            <td th:text="${aluno.nome}">---</td>
+            <td th:text="${aluno.email}">---</td>
+            <td th:text="${aluno.curso}">---</td>
+            <td>
+                <a th:href="@{'/alunos/editar/' + ${aluno.id}}">Editar</a>
+            </td>
+            <td>
+                <a th:href="@{'/alunos/excluir/' + ${aluno.id}}"
+                   onclick="return confirm('Tem certeza que deseja excluir este aluno?');">
+                    Excluir
+                </a>
+            </td>
+        </tr>
+    </table>
+
+</body>
+
+</html>

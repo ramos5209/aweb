@@ -1,0 +1,124 @@
+/* Fonte e layout geral */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    margin: 20px;
+    color: #333;
+}
+
+/* Cabeçalho */
+h1 {
+    color: #2c3e50;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+}
+
+/* Tabela */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #f1f1f1;
+    color: #333;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #eef5ff;
+}
+
+/* Links */
+a {
+    text-decoration: none;
+    color: #0077cc;
+    font-weight: 500;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #005fa3;
+}
+
+/* Mensagens */
+.message {
+    color: #28a745;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.error {
+    color: #dc3545;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+/* Botão */
+button {
+    padding: 8px 16px;
+    background-color: #0077cc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #005fa3;
+}
+
+/* Formulário */
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: inline-block;
+    width: 120px;
+    font-weight: 500;
+}
+
+input,
+textarea {
+    width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+/* Validação */
+span {
+    color: #dc3545;
+    font-size: 0.85em;
+    margin-left: 5px;
+}
+
+/* Link para novo cadastro */
+p.insert-link {
+    margin-top: 20px;
+}
+
