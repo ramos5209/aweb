@@ -14,12 +14,12 @@
   <body>
     <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" th:href="@{/todo}">Navbar</a>
       </div>
     </nav>
     <main class="container">
       <h1>Lista de Tarefas</h1>
-      <table class="table">
+      <table class="table" th:unless="${#lists.isEmpty(todos)}">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -45,7 +45,8 @@
           </tr>
         </tbody>
       </table>
-      <a href="" class="btn btn-sm btn-primary">Nova Tarefa</a>
+      <p th:if="${#lists.isEmpty(todos)}">Nenhuma tarefa cadastrada.</p>
+      <a th:href="@{todo/create}" class="btn btn-sm btn-primary">Nova Tarefa</a>
     </main>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
