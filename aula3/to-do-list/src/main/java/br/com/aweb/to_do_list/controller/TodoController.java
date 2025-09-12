@@ -85,4 +85,19 @@ public class TodoController {
         return "redirect:/todo";
     }
 
+    @GetMapping("/delete/{id}")
+    public ModelAndView delete(@PathVariable Long id){
+        var todo = todoRepository.findById(id);
+        if (todo.isPresent()) {
+            return new ModelAndView("delete", Map.of("todo", todo.get()));
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping("/delete/{id}")
+    public String delete(Todo todo){
+        todoRepository.delete(todo);
+        return "redirect:/todo";
+    }
+
 }
