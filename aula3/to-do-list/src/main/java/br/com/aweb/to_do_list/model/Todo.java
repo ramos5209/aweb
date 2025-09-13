@@ -46,7 +46,7 @@ public class Todo {
     private LocalDateTime createdAt= LocalDateTime.now();
     
     @NotNull
-    @FutureOrPresent
+    //@FutureOrPresent
     @DateTimeFormat(iso = ISO.DATE)
     @Column(nullable = false)
     private LocalDate deadline;
