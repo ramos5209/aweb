@@ -20,7 +20,7 @@
     </nav>
     <main class="container">
       <h1 class="mt-4 mb-5">Lista de Manutenções</h1>
-      <a th:href="@{/sistema-manutencao/nova}" class="btn btn-sm btn-primary mb-3"
+      <a th:href="@{/sistema-manutencao/nova-manutencao}" class="btn btn-sm btn-primary mb-3"
         >Nova Manutenção</a
       >
       <table
@@ -31,10 +31,10 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Nome do Solicitante</th>
-            <th scope="col">Criado em</th>
             <th scope="col">Maquina N°</th>
             <th scope="col">Maquina</th>
             <th scope="col">Descrição do problema</th>
+            <th scope="col">Criado Em</th>
             <th scope="col">Finalizado em</th>
             <th scope="col">Ações</th>
           </tr>
@@ -50,7 +50,7 @@
             <td th:text="${#temporals.format(manutencao.criadoEm)}">---</td>
             <td th:text="${#temporals.format(manutencao.dataFinalizado) ?: '-'}">---</td>
             <td>
-              <!-- <a href="" class="btn btn-sm btn-primary">Concluir</a> -->
+             
               <form
                 class="d-inline"
                 th:action="@{/sistema-manutencao/finalizar/{id}(id=${manutencao.id})}"
