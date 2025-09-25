@@ -1,6 +1,7 @@
 package br.com.aweb.sistema_manutencao.controller;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.Optional;
 
@@ -70,16 +71,28 @@ public class ManutencaoController {
     @GetMapping("/delete/{id}")
     public ModelAndView delete(@PathVariable Long id){
         var manutencao =  manutencaoRepository.findById(id);
-        if(manutencao.isPresent() && manutencao.get().getDataFinalizado()== null){
+        if(manutencao.isPresent()){
             return new ModelAndView("delete", Map.of("manutencao", manutencao.get()));
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
-    @PostMapping("delete/{id}")
+    @PostMapping("/delete/{id}")
     public String delete(Manutencao manutencao){
         manutencaoRepository.delete(manutencao);
         return "redirect:/sistema-manutencao";
+    }
+
+    @PostMapping("/finalizar/{id}")
+    public String finalizar(@PathVariable Long id){
+        var optionalManutencao = manutencaoRepository.findById(id);
+        if (optionalManutencao.isPresent()) {
+            var manutencao = optionalManutencao.get();
+            manutencao.setDataFinalizado(LocalDate.now());
+            manutencaoRepository.save(manutencao);
+            return "redirect:/sistema-manutencao";
+        }
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
 }
