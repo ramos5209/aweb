@@ -1,0 +1,3 @@
+comando para subir docker compose 
+    docker compose up -d
+
